@@ -1,0 +1,313 @@
+body 
+{
+	scrollbar-base-color: #F5F5F5;
+	scrollbar-face-color: Silver;
+	scrollbar-track-color: #E0E0E0; /* фон; ако го няма - highlight & face == шахматно */
+	scrollbar-arrow-color: Black; /* active */
+	scrollbar-shadow-color: Black; /* inactive arrow, шахматно с highlight; inside right & bottom */
+	scrollbar-darkshadow-color: #F1F1F1; /* right & bottom */
+	scrollbar-highlight-color: Black;
+	scrollbar-3dlight-color: white; /* upper & left */
+	font-family: Tahoma;
+	font-size: 10pt;
+}
+
+table 
+{
+	font-size: 10pt;
+}
+
+a
+{
+	color: #5873DD;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.btn
+{
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	border-radius: 6px;
+	font-size: 16pt;
+	line-height: 1.33;
+	padding: 10px 10px;
+}
+
+a.btn-yes
+{
+	background-color: #5CB85C;
+	color: white;
+}
+
+a.btn-no
+{
+	background-color: #D9534F;
+	color: white;
+}
+
+.new_cal
+{
+	background-color: #3A8FFF;
+	color: white;
+}
+
+a.small
+{
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	border-radius: 6px;
+	font-size: 12pt;
+	line-height: 1.25;
+	padding: 5px 8px;
+	margin: 6px 6px;
+}
+
+a.small-yes
+{
+	background-color: #C0DCC0;
+	color: black;
+	border: 2px outset black;
+	padding: 2px 10px;
+}
+
+a.small-no
+{
+	background-color: #D0D0D0;
+	color: black;
+	border: 1px outset grey;
+	padding: 2px 10px;
+}
+
+a.small-act
+{
+	background-color: #FFD6F6;
+	color: black;
+	border: 1px outset black;
+	padding: 2px 10px;
+}
+
+a.small-act:hover
+{
+	background-color: #D0D0D0;
+}
+
+a.tit
+{
+	color: #0039AD;
+	font-weight: bold;
+	text-decoration: none;
+	font-family: Tahoma;
+}
+
+a.tit:hover
+{
+	color: #0039AD;
+	font-weight:bold;
+	text-decoration: underline;
+}
+
+input.edit 
+{
+	color: #003399;
+	font-family: Verdana;
+	border: 1px solid Black;
+	background-color: #FFFFE0;
+}
+
+input.edit2 
+{
+	font-family: Tahoma; 
+	border: none; 
+	background-color: #ACB539; 
+}
+
+input.button
+{
+	white-space: nowrap;
+	border-radius: 6px;
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 3px 8px;
+	color: black;
+	border: 2px solid Black;
+	background-color: orange;
+}
+
+input.button2
+{
+	white-space: nowrap;
+	border-radius: 6px;
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 3px 8px;
+	color: white;
+	border: 2px outset grey;
+	background-color: #6FACF2;
+}
+
+input.button2:hover
+{
+	border: 2px inset grey;
+}
+
+input.button3
+{
+	white-space: nowrap;
+	border-radius: 6px;
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 10pt;
+	padding: 2px 6px;
+	color: black;
+	border: 1px outset grey;
+	background-color: #D6D5CB;
+	cursor: pointer;
+}
+
+input.button3:hover
+{
+	border: 1px inset grey;
+}
+
+select.combo 
+{
+	background-color: #FFFFE0;
+	font-family: Tahoma;
+	color: #003399;
+}
+
+select.combo2 
+{
+	background-color: #FFFFE0;
+	font-family: Tahoma;
+	color: #003399;
+	font-weight: bold;
+	width: 60pt;
+}
+
+textarea 
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+
+textarea.coment 
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	background-color: #FFFFE0;
+	border:1px solid black;
+}
+
+.wrong
+{
+	background-color: #FF2B23;
+	color: white;
+	font-family: Tahoma;
+	font-size: 10pt;
+	line-height: 1.33; 
+}
+
+th.br_bot
+{
+	border-bottom: 1px solid black;
+	padding: 2px;
+}
+
+th.br_btr
+{
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	padding: 2px;
+}
+
+td.week_num
+{
+	font-size: 9pt;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	background-color: #D0D0D0;
+	padding: 2px;
+}
+
+td.day
+{
+	font-size: 9pt;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	cursor: pointer;
+}
+
+td.day_red
+{
+	background-color: #FFDBE1;
+}
+
+td.day_green
+{
+	background-color: #A0D89E;
+}
+
+td.day_blue
+{
+	background-color: #3279F2;
+}
+
+span.week_day
+{
+	color: black;
+}
+
+span.week_end
+{
+	color: red;
+}
+
+table.log
+{
+	font-family:Tahoma;
+	background-color: #D3D3D3;
+	padding-left:5px;
+	padding-right:5px;
+	border-color:black;
+	border-width:1pt;
+	border-style:solid;
+}
+
+table.log #sub
+{
+	border-style:groove;
+}
+
+table.log th
+{
+	background-color:#0000F0;	
+	color:White;
+	text-align:center;
+}
+
+table.list_1
+{
+	font-size: 10pt;
+	border-collapse: collapse;
+}
+
+table.list_1 th
+{
+  background-color: #F0CAA6;
+  border:1px solid black;
+}
+
+table.list_1 td
+{
+  border:1px solid black;
+}

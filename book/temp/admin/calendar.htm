@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<Title>Calendars</title>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="{PREP}/skin/normal.css">
+</head>
+<body topmargin="3" leftmargin="3" rightmargin="3" bottommargin="3">
+<form name="admin" action="{PREP}/admin/index.php" method="POST">
+  <table width="95%" cellspacing="0" cellpadding="0">
+		<tr><td style="font-size:4pt">&nbsp;</td></tr>
+		<tr valign="top">
+	    <td><table cellspacing="0" cellpadding="6">
+	      <tr><td>{LMENU}</td></tr>
+	    </table></td>
+	    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%">
+        <div align="center">
+          <a href="{PREP}/admin/index.php?cal=1" class="btn btn-{CAL_1}">Only my calendars</a>
+          &nbsp;&nbsp;
+          <a href="{PREP}/admin/index.php?cal=2" class="btn btn-{CAL_2}">All calendars</a>
+        </div>
+        <br>
+        <table cellspacing="1" cellpadding="2">
+  				<tr valign="top">
+  					<td>
+  					  <a href="javascript:;" class="small new_cal" onClick="javascript: with(document.admin) { new_name.value = window.prompt('Enter the name of the new calendar'); if(new_name.value!='') submit(); }">Add new</a>
+  					  {CAL_LIST}
+  					</td>
+  					<td>&nbsp;</td>
+  					<td width="100%">
+  					  <div align="center" style="font-size:11pt;vertical-align:middle;{VIS_MAIL}">
+  					    Send notifications for bookings in this calendar to my e-mail:
+  					    <input type="text" class="edit" name="notify" size="35" maxlength="50" value="{MAIL}">
+  					    <input type="submit" class="button" name="cmdNotify" value="Save">
+  					    &nbsp;&nbsp;&nbsp;
+  					    <span style="background-color:#F2CEA4;padding:3px;border:1px solid black;">
+    					    <input type="checkbox" name="multi_book" value="1" {MULTI_BOOK} onClick="javascript: with(this.form) { chk_box.value = 1; submit(); }">
+    					    <b>Allow booking of more than 1 time slot</b>
+    					  </span>
+  					  </div>
+  					  {CALENDAR}
+  					</td>
+  				</tr>
+  			</table>
+  		</td>
+		</tr>
+  </table>
+<input type="hidden" name="pageid" value='{PAGEID}'>
+<input type="hidden" name="new_name">
+<input type="hidden" name="chk_box">
+</form>
+<script language="Javascript" type="text/javascript">
+  <!--{ERROR}-->
+
+  function FinalConfirm(str1)
+  {
+  	var truthBeTold = window.confirm(str1);
+  	if (truthBeTold) return true; else return false;
+  }
+
+</script>
+</body>
+</html>

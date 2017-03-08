@@ -1,0 +1,2 @@
+This folder is intended for image and file uploads in TinyMCE (using plugins FileManager and ImageManager).
+You should reflect this in their corresponding "config.php" files.

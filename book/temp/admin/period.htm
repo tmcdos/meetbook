@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<Title>Time slots</title>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="{PREP}/skin/normal.css">
+</head>
+<body topmargin="3" leftmargin="3" rightmargin="3" bottommargin="3">
+<form name="admin" action="{PREP}/admin/index.php" method="POST">
+  <table width="95%" cellspacing="0" cellpadding="0">
+		<tr><td style="font-size:4pt">&nbsp;</td></tr>
+		<tr valign="top">
+	    <td><table cellspacing="0" cellpadding="6">
+	      <tr><td>{LMENU}</td></tr>
+	    </table></td>
+	    <td>&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%">
+        <table cellspacing="1" cellpadding="2">
+          <caption>{CAL_LIST}</caption>
+  				<tr valign="top">
+  					<td align="center" style="{VIS_TIME}">
+  					  <table id="sub" align="center" class="log" cellspacing="2" cellpadding="1">
+  					    <tr>
+    							<th colspan="2">&nbsp;Define time slots&nbsp;</th>
+    						</tr>
+  					    <tr align="center">
+  					      <td colspan="2">Within the interval</td>
+  					    </tr>
+  					    <tr>
+  					      <td align="right">from</td>
+  					      <td><input type="text" class="edit" name="beg_time" size="6" maxlength="5" value="{BEG_TIME}"> (HH or HH:MM)</td>
+  					    </tr>
+  					    <tr>
+  					      <td align="right">to</td>
+  					      <td><input type="text" class="edit" name="end_time" size="6" maxlength="5" value="{END_TIME}"> (HH or HH:MM)</td>
+  					    </tr>
+  					    <tr align="center">
+  					      <td colspan="2"><input type="submit" class="button" name="cmdSlot" value="Create" onClick="javascript: return Validate(this.form);"></td>
+  					    </tr>
+  					    <tr>
+  					      <td align="right">a) <input type="text" class="edit" name="num_slot" size="3" maxlength="2" value="{NUM_SLOT}" onKeyPress="javascript:num_edit(this,this.form.slot_size);"></td>
+  					      <td>number of time slots</td>
+  					    </tr>
+  					    <tr align="center">
+  					      <td colspan="2"><b>OR</b></td>
+  					    </tr>
+  					    <tr>
+  					      <td align="right">b) <input type="text" class="edit" name="slot_size" size="3" maxlength="3" value="{SLOT_SIZE}" onKeyPress="javascript:num_edit(this,this.form.num_slot);"></td>
+  					      <td>minutes long periods</td>
+  					    </tr>
+  					  </table>
+  					  <div style="padding:3px"></div>
+  					  <div align="center">
+  					    <input type="submit" name="cmdCopy" class="button2" value="Copy to selected days">
+  					    &nbsp;
+  					    <input type="submit" name="cmdClear" class="button2" value="Clear" onClick="javascript: return FinalConfirm('Delete time slots for this date ?');">
+  					  </div>
+  					  <div style="padding:3px"></div>
+  					  <div align="center" style="color:red">WARNING - deleting time slot(s) does not notify booked attenders.<br>To notify them - first clear the bookings from <a href="{PREP}/admin/index.php?pageid=1" class="small new_cal">Calendars</a></div>
+  					  <div style="padding:4px"></div>
+  					  <table class="list_1" cellspacing="0" cellpadding="3" border="1" bordercolor="black">
+  					    <tr>
+  					      <th>&nbsp;</th>
+  					      <th>Start</th>
+  					      <th>End</th>
+  					      <th>Booked</th>
+  					      <th>Overlaps</th>
+  					    </tr>
+  					    <tr><td>{PLIST}</td></tr>
+  					  </table>
+            </td>
+            <td>&nbsp;</td>
+  					<td><table>
+  					  <tr>
+  					    <td align="center"><b style="color:blue">{CAP}</b></td>
+  					    <td nowrap align="right">
+    					    <input type="image" class="button3" src="{PREP}/images/left.gif" name="cmdPrev" align="absmiddle">
+    					    &nbsp;
+    					    <input type="text" class="edit" name="godina" size="6" maxlength="4" value="{GODINA}">
+    					    &nbsp;
+    					    <input type="image" class="button3" src="{PREP}/images/right.gif" name="cmdNext" align="absmiddle">
+    					    &nbsp;&nbsp;
+    					  </td>
+    					</tr>
+    					<tr>
+    					  <td colspan="2">
+    					    <table id="cal" cellspacing="0" cellpadding="1" style="border-left:1px solid black; border-top:1px solid black;font-weight:bold;">
+        						<tr style="font-size:9pt;" bgcolor="#D6B695">
+        							<th colspan="8" class="br_btr">&nbsp;JANUARY&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;FEBRUARY&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;MARCH&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;APRIL&nbsp;</th>
+        						</tr>
+        						<tr align="center">
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        						</tr>
+        						<tr><td>{WEEK_1}</td></tr>
+        
+        						<tr style="font-size:9pt;" bgcolor="#D6B695">
+        							<th colspan="8" class="br_btr">&nbsp;MAY&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;JUNE&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;JULY&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;AUGUST&nbsp;</th>
+        						</tr>
+        						<tr align="center">
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        						</tr>
+        						<tr><td>{WEEK_2}</td></tr>
+        
+        						<tr style="font-size:9pt;" bgcolor="#D6B695">
+        							<th colspan="8" class="br_btr">&nbsp;SEPTEMBER&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;OCTOBER&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;NOVEMBER&nbsp;</th>
+        							<th colspan="8" class="br_btr">&nbsp;DECEMBER&nbsp;</th>
+        						</tr>
+        						<tr align="center">
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        							<th class="br_bot">&nbsp;</th>
+        							<th class="br_bot">Mo</th>
+        							<th class="br_bot">Tu</th>
+        							<th class="br_bot">We</th>
+        							<th class="br_bot">Th</th>
+        							<th class="br_bot">Fr</th>
+        							<th class="br_bot">Sa</th>
+        							<th class="br_btr">Su</th>
+        						</tr>
+        						<tr><td>{WEEK_3}</td></tr>
+        					</table>
+        					<div style="padding:3px"></div>
+                  <div align="center">
+                    <a href="{PREP}/admin/index.php?pageid=1" class="small new_cal">Preview</a>
+                    &nbsp;&nbsp;
+                    <input type="submit" class="button2" name="cmdDel" value="Destroy" onClick="javascript: return FinalConfirm('Do you really want to destroy this calendar ?');">
+                  </div>
+      					</td>
+              </tr>      					
+    				</table></td>
+   				</tr>
+   			</table>
+   		</td>
+		</tr>
+  </table>
+<input type="hidden" name="pageid" value='{PAGEID}'>
+<input type="hidden" name="dayn">
+</form>
+<script language="Javascript" type="text/javascript">
+  <!--{ERROR}-->
+
+  function trim(str)
+  {
+    // Use a regular expression to replace leading and trailing 
+    // spaces with the empty string
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+  }
+
+  function FinalConfirm(str1)
+  {
+  	var truthBeTold = window.confirm(str1);
+  	if (truthBeTold) return true; else return false;
+  }
+
+  function num_edit(el,t)
+  {
+    var x = trim(el.value);
+    var i = parseInt(x,10);
+    if(i!=0) t.value = '';
+  }
+  
+  function Validate(top)
+  {
+    var n = parseInt(trim(top.num_slot.value),10);
+    var s = parseInt(trim(top.slot_size.value),10);
+    var tmp = trim(top.beg_time.value);
+    var bt = (tmp!='' ? tmp.split(':') : new Array());
+    var tmp = trim(top.end_time.value);
+    var et = (tmp!='' ? tmp.split(':') : new Array());
+    // Beg time
+    if(bt.length==0)
+    {
+      alert('Please specify the start of time interval');
+      return false;
+    }          
+    if(bt[0]<0 || bt[0]>23)
+    {
+      alert('Invalid starting hour');
+      return false;      
+    }
+    if(bt.length>1 && (bt[1]<0 || bt[1]>59))
+    {
+      alert('Invalid starting minute');
+      return false;
+    }
+    var t_beg = bt[0] * 60;
+    if(bt.length>1) t_beg += bt[1] * 1;
+    // End time
+    if(et.length==0)
+    {
+      alert('Please specify the end of time interval');
+      return false;
+    }          
+    if(et[0]<0 || et[0]>23)
+    {
+      alert('Invalid ending hour');
+      return false;      
+    }
+    if(et.length>1 && (et[1]<0 || et[1]>59))
+    {
+      alert('Invalid ending minute');
+      return false;
+    }
+    var t_end = et[0] * 60;
+    if(et.length>1) t_end += et[1] * 1;
+    // number of time slots
+    if(n>0 && (t_end - t_beg)/n < 10)
+    {
+      alert('Too many time slots for the specified time interval - maximum of '+Math.round((t_end - t_beg)*10)/10+' slots possible');
+      return false;      
+    }
+    // size of time slots
+    if(s>0 && (t_end - t_beg)<s)
+    {
+      alert('Too large time slots for the specified time interval - maximum of '+(t_end - t_beg)+' minutes possible');
+      return false;      
+    }
+    // BEG before END
+    if(t_beg >= t_end)
+    {
+      alert('Starting time ('+t_beg+') is AFTER the ending time ('+t_end+')');
+      return false;
+    }
+    if(n==0 && s<10)
+    {
+      alert('Missing number of time slots - or too short size');
+      return false;
+    }
+    
+    return true;
+  }
+  
+</script>
+</body>
+</html>

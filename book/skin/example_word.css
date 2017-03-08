@@ -1,0 +1,54 @@
+body
+{
+	background-color: white;
+	font-family: Tahoma, Verdana;
+	font-size: 10pt;
+	scrollbar-base-color: #F5F5F5;
+	scrollbar-face-color: Silver;
+	scrollbar-track-color: #E0E0E0; /* фон; ако го няма - highlight & face == шахматно */
+	scrollbar-arrow-color: Black; /* active */
+	scrollbar-shadow-color: Black; /* inactive arrow, шахматно с highlight; inside right & bottom */
+	scrollbar-darkshadow-color: #F1F1F1; /* right & bottom */
+	scrollbar-highlight-color: Black;
+	scrollbar-3dlight-color: white; /* upper & left */
+	margin: 2;
+}
+
+/*td 
+{
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+}
+
+pre 
+{
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10pt;
+}*/
+
+/* Fix for MS Office style paragraphs (MsoNormal) */
+p 
+{
+	margin: 0;
+	padding: 0;
+}
+
+/* Fix for MS Office unindeted lists */
+.unIndentedList 
+{
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}
+
+.unIndentedList li 
+{
+	padding: 0;
+}
+
+/* Fix for MS Office UL lists */
+ul 
+{
+	margin-top: 0;
+	margin-bottom: 0;
+}

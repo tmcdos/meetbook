@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<Title>Prospects</title>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="{PREP}/skin/normal.css">
+<link rel="STYLESHEET" type="text/css" href="{PREP}/skin/grid/dhtmlxgrid.css">
+<link rel="stylesheet" type="text/css" href="{PREP}/skin/grid/skins/dhtmlxgrid_dhx_skyblue.css">
+<script  src="{PREP}/INC/js/email.js"></script>
+<script  src="{PREP}/INC/grid/dhtmlxcommon.js"></script>
+<script  src="{PREP}/INC/grid/dhtmlxgrid.js"></script>
+<script  src="{PREP}/INC/grid/dhtmlxgridcell.js"></script>    
+<script  src="{PREP}/INC/data/dhtmlxdataprocessor.js"></script>    
+<script  src="{PREP}/INC/grid/ext/dhtmlxgrid_validation.js"></script>    
+</head>
+<body topmargin="3" leftmargin="3" rightmargin="3" bottommargin="3">
+<form name="admin" action="{PREP}/admin/index.php" method="POST">
+  <table width="95%" cellspacing="0" cellpadding="0">
+		<tr><td style="font-size:4pt">&nbsp;</td></tr>
+		<tr valign="top">
+	    <td><table cellspacing="0" cellpadding="6">
+	      <tr><td>{LMENU}</td></tr>
+	    </table></td>
+	    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%">
+        <div align="center">
+          <a href="{PREP}/admin/index.php?usr=1" class="btn btn-{USR_1}">Only mine</a>
+          &nbsp;&nbsp;
+          <a href="{PREP}/admin/index.php?usr=2" class="btn btn-{USR_2}">All prospects</a>
+        </div>
+        <br>
+        <table cellspacing="1" cellpadding="2">
+  				<tr valign="top">
+  					<td align="right">
+  					  <label for="pro_name">First and last name</label>
+  					  <input type="text" class="edit" name="pro_name" size="32" value='{PRO_NAME}'>
+  					  <br><br>
+  					  <label for="pro_mail">E-mail</label>
+  					  <input type="text" class="edit" name="pro_mail" size="32" value='{PRO_MAIL}'>
+  					  <br><br>
+  					  <input type="checkbox" name="pro_view" value="1" {PRO_VIEW}>&nbsp;Can view all calendars
+  					  <br><br>
+  					  <div align="center"><input type="submit" class="button" name="cmdAdd" value="Add new"></div>
+  					</td>
+  					<td>&nbsp;</td>
+  					<td align="center">
+  					  <div style="font-size:12pt;font-weight:bold;color:{COL_EDIT}">Inline editing is {INLINE}</div>
+  					  <div id="err_msg" class="wrong"></div>
+  					  <br style="font-size:4pt">
+              <div id="gridbox" style="width:800px; height:600px;"></div>
+  					  <br style="font-size:4pt">
+  					  <div><input type="submit" name="cmdAll" class="button2" value="Invite all"></div>
+            </td>
+          </tr>
+        </table>              
+			</td>
+		</tr>
+  </table>
+<input type="hidden" name="pageid" value='{PAGEID}'>
+<input type="hidden" name="item_id">
+<input type="hidden" name="del_id">
+</form>
+<script language="Javascript" type="text/javascript">
+  <!--{ERROR}-->
+
+  var err = '';
+  
+  function trim(str)
+  {
+    // Use a regular expression to replace leading and trailing 
+    // spaces with the empty string
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+  }
+
+  function FinalConfirm(str1)
+  {
+  	var truthBeTold = window.confirm(str1);
+  	if (truthBeTold) return true; else return false;
+  }
+
+  function eXcell_button(cell)
+  {
+    if (cell)
+    {
+      this.cell = cell;
+      this.grid = this.cell.parentNode.grid;
+    }
+    this.edit = function(){}     //read-only cell doesn't have edit method
+    this.isDisabled = function() // the cell is read-only, that's why it is always in the disabled state
+    { 
+      return true; 
+    }      
+    this.setValue=function(val)
+    {
+      var row_id = this.cell.parentNode.idd; //get related row id (iDD is not syntax error)
+      this.setCValue("<input type='submit' class='button3' value='Invite' onClick='javascript: with(document.admin) { item_id.value="+row_id+"; submit(); }'>"
+        +(val>0 ? 
+          " <input type='submit' class='new_cal' style='font-weight:bold;background-color:#"
+            +(val>0 ? '5CB85C' : 'D9534F')
+            +";' value='Delete' onClick='javascript: if(FinalConfirm(\"Really delete the prospect "
+            +(val<0 ? '(there are bookings) ' : '')
+            +"?\")) with(document.admin) { del_id.value="+row_id+"; submit(); } else return false;'>" 
+          : ''),val);        
+    }
+  }
+  eXcell_button.prototype = new eXcell;    // nest all other methods from base class
+
+  function eXcell_roch(cell)
+  {
+    if (cell)
+    {
+      this.cell = cell;
+      this.grid = this.cell.parentNode.grid;
+    }
+    this.edit = function(){}     //read-only cell doesn't have edit method
+    this.isDisabled = function() // the cell is read-only, that's why it is always in the disabled state
+    { 
+      return true; 
+    }      
+    this.setValue=function(val)
+    {
+      var row_id = this.cell.parentNode.idd; //get related row id (iDD is not syntax error)
+      this.setCValue("<input type='checkbox' name='grid_chk_"+row_id+"' value='1' onClick='javascript: return false;' "+(val!=0 ? 'checked' : '')+">",val);        
+    }
+  }
+  eXcell_roch.prototype = new eXcell;    // nest all other methods from base class
+  
+  function my_Eror(node)
+  {
+    alert(node.firstChild.data);
+    return false;
+  }
+  
+  function val_name(val,row_id,col_id)
+  {
+    var res = trim(val) != '';
+    if(!res) myDP.messages.push('Name of prospect can not be empty'); 
+    return res;         
+  }
+
+  function val_mail(val,row_id,col_id)
+  {
+    err = emailCheck(trim(val),true);
+    if(err != '') myDP.messages.push(err);
+    return (err == '');        
+  }
+  
+  //init grid and set its parameters
+  mygrid = new dhtmlXGridObject('gridbox');
+  mygrid.setImagePath("{PREP}/skin/grid/imgs/");
+  mygrid.setHeader("No,First and last name,E-mail,Invitations,Book any calendar,Actions");
+  mygrid.setColumnIds("no,name,email,cnt_mail,view_any,invite");
+  mygrid.setInitWidths("50,180,200,80,120,150");
+  mygrid.setColAlign("center,left,left,center,center,center");
+  mygrid.setSkin("dhx_skyblue");
+  mygrid.setColSorting("int,str,str,int,int,str");
+  mygrid.preventIECaching(true);
+  mygrid.enableAutoHeight(true);  
+  mygrid.init();
+  mygrid.load("{PREP}/admin/get_client.php","json");
+  if({CAN_EDIT})
+  {
+    mygrid.setColTypes("ro,ed,ed,ro,ch,button");
+    myDP = new dataProcessor("{PREP}/admin/set_client.php");
+    myDP.init(mygrid);
+    myDP.enableDataNames(true);
+    myDP.defineAction("error",my_Eror);    
+    myDP.setVerificator(1,val_name);     
+    myDP.setVerificator(2,val_mail);     
+    myDP.attachEvent("onValidationError", function(id, errors) 
+    {
+      document.getElementById('err_msg').innerHTML = '&nbsp;'+errors[0]+'&nbsp;';
+      return false;
+    });
+    myDP.attachEvent("onFullSync", function() 
+    {
+      document.getElementById('err_msg').innerHTML = "";
+      return false;
+    });
+  }
+  if(!{CAN_EDIT}) mygrid.setColTypes("ro,ro,ro,ro,roch,ro");
+</script>
+</body>
+</html>
